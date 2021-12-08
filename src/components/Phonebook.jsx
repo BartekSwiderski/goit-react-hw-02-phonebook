@@ -3,6 +3,7 @@ import styles from "./Phonebook.module.css";
 import ContactForm from "./ContactForm";
 import Filter from "./Filter";
 import ContactList from "./ContactList";
+import Notiflix from "../../node_modules/notiflix";
 import { nanoid } from "nanoid";
 
 export class Phonebook extends Component {
@@ -18,16 +19,17 @@ export class Phonebook extends Component {
   };
 
   changeForm = (event) => {
-    this.contactExist(event.target.value)
-      ? alert(`${event.target.value} is alredy in contacts.`)
-      : this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   saveContact = (event) => {
+    const {
+      elements: { name },
+    } = event.currentTarget;
     const form = event.target;
     event.preventDefault();
-    this.contactExist(this.state.name)
-      ? alert(`${event.target.value} is alredy in contacts.`)
+    this.state.contacts.some((contact) => contact.name === name.value)
+      ? Notiflix.Notify.failure(`${name.value} is alredy in contacts.`)
       : this.setState(({ name, number, contacts }) => {
           return {
             contacts: [...contacts, { id: nanoid(), name, number }],

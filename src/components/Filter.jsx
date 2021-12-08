@@ -2,12 +2,12 @@ import styles from "./Phonebook.module.css";
 
 const Filter = ({ setFilter }) => {
   return (
-    <div className={styles.column}>
-      <label className={styles.label} htmlFor="filter">
+    <div className={styles.filter}>
+      <label className={styles.filterLabel} htmlFor="filter">
         Find contacts by name{" "}
       </label>
       <input
-        className={styles.input}
+        className={styles.filterInput}
         required
         type="text"
         name="filter"
