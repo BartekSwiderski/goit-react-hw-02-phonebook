@@ -2,7 +2,7 @@ import styles from "./Phonebook.module.css";
 
 const ContactForm = ({ save, changeForm }) => {
   return (
-    <form className={styles.formSubmit} onSubmit={save}>
+    <form className={styles.form} onSubmit={save}>
       <div className={styles.formItem}>
         <label className={styles.formLabel} htmlFor="name">
           Name

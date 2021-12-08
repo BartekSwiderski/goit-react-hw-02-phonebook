@@ -7,7 +7,12 @@ const ContactList = ({ filter, del, data }) => {
         {data.map(({ id, name, number }) => {
           return name.toLowerCase().includes(filter.toLowerCase()) ? (
             <li key={id} className={styles.contactItem}>
-              {name} {number}
+              <div>
+                <span className={styles.contactName}>{name}</span>
+              </div>
+              <div>
+                <span className={styles.contactNumber}>tel. {number}</span>
+              </div>
               <button className={styles.contactDel} onClick={() => del(id)}>
                 Delete
               </button>
@@ -19,7 +24,9 @@ const ContactList = ({ filter, del, data }) => {
       </ul>
     );
   } else
-    return <p className={styles.contactEmpty}>You have no saved contacts</p>;
+    return (
+      <p className={styles.contactEmpty}>You have no saved contacts ಥ_ಥ</p>
+    );
 };
 
 export default ContactList;
